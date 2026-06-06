@@ -43,9 +43,51 @@ Requirements:
         contents=prompt
     )
 
-    filename = topic.replace(" ", "_") + ".txt"
+    filename = topic.replace(" ", "_") + ".html"
 
-    with open(f"articles/{today}/{filename}", "w", encoding="utf-8") as f:
-        f.write(response.text)
+    html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+<title>{topic}</title>
+<style>
+body {{
+    background:#0f172a;
+    color:white;
+    font-family:Arial,sans-serif;
+    max-width:1000px;
+    margin:auto;
+    padding:30px;
+}}
+.hero {{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    padding:40px;
+    border-radius:15px;
+}}
+.article {{
+    background:#1e293b;
+    padding:25px;
+    border-radius:15px;
+    margin-top:20px;
+}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<h1>{topic}</h1>
+<p>AI Future Hub</p>
+</div>
+
+<div class="article">
+{response.text}
+</div>
+
+</body>
+</html>
+"""
+
+with open(f"articles/{today}/{filename}", "w", encoding="utf-8") as f:
+    f.write(html)
 
     print(f"Saved: {filename}")
