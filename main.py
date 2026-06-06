@@ -1,12 +1,4 @@
-from pytrends.request import TrendReq
 
-pytrends = TrendReq()
-
-pytrends.build_payload(["AI"])
-
-trending = pytrends.related_queries()["AI"]["top"]
-
-topics = trending["query"].head(5).tolist()
 
 from datetime import datetime
 import os
@@ -15,14 +7,21 @@ today = datetime.now().strftime("%Y-%m-%d")
 os.makedirs(f"articles/{today}", exist_ok=True)
 
 from google import genai
-import os
+
+
 
 client = genai.Client(
     api_key=os.environ["GEMINI_API_KEY"]
-)
+)   
 
 
-
+topics = [
+    "ChatGPT",
+    "Google Gemini",
+    "AI Tools",
+    "Artificial Intelligence",
+    "Machine Learning"
+]
 
 for topic in topics:
     print(topic)
