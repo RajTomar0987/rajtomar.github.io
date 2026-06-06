@@ -15,8 +15,12 @@ today = datetime.now().strftime("%Y-%m-%d")
 os.makedirs(f"articles/{today}", exist_ok=True)
 
 from google import genai
+import os
 
-client = genai.Client(api_key=""GEMINI_API_KEY"")
+client = genai.Client(
+    api_key=os.environ["GEMINI_API_KEY"]
+)
+
 
 
 
