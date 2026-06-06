@@ -1,0 +1,6 @@
+from datetime import datetime
+import os
+
+today = datetime.now().strftime("%Y-%m-%d")
+
+os.makedirs(f"articles/{today}", exist_ok=True)
