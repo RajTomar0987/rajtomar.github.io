@@ -80,7 +80,7 @@ body {{
 </div>
 
 <div class="article">
-{response.text}
+{response.text.replace(chr(10), "<br>")}
 </div>
 
 </body>
